@@ -28,14 +28,29 @@ public class RayShooterScript : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit)) {
 			
-				GameObject hitObject = hit.transform.gameObject;
-				ChargeableScript chargeable = hitObject.GetComponentInChildren<ChargeableScript>();
-				if (chargeable != null) {
-					flash.SetActive(true);
-					chargeable.Charge(Time.deltaTime * chargeSpeed);
-					Debug.Log ("Target hit");
-				}
-				else {
+			GameObject hitObject = hit.transform.gameObject;
+			ChargeableScript chargeable = hitObject.GetComponentInChildren<ChargeableScript>();
+			WaterSphereScript waterSphere = hitObject.GetComponentInChildren<WaterSphereScript>();
+			LavaSphereScript lavaSphere = hitObject.GetComponentInChildren<LavaSphereScript>();
+
+			/*if (chargeable.temperature > 50f) {
+				waterSphere.SetMaterialAlpha(0f);
+				lavaSphere.SetMaterialAlpha((chargeable.temperature - 50f) / 50f);
+			}
+			else if (chargeable.temperature < 50f) {
+				waterSphere.SetMaterialAlpha((chargeable.temperature - 50f)/ 50f);
+				lavaSphere.SetMaterialAlpha(0f);
+			}
+			else {
+				waterSphere.SetMaterialAlpha(0f);
+				lavaSphere.SetMaterialAlpha(0f);
+			} */
+			if (chargeable != null) {
+				flash.SetActive(true);
+				chargeable.Charge(Time.deltaTime * chargeSpeed);
+				Debug.Log ("Target hit");
+			}
+			else {
 				flash.SetActive(false);
 				Debug.Log("Deactivate!");
 			}

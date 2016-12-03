@@ -5,7 +5,7 @@ using System.Collections;
 public class ChargeableScript : MonoBehaviour {
 
 	public float temperature = 50f;
-	public float step = 1f;
+	public float step = 5f;
 	float time;
 
 	// Use this for initialization
@@ -17,6 +17,12 @@ public class ChargeableScript : MonoBehaviour {
 	void Update () {
 		Uncharge();
 		GetComponent<Image>().fillAmount = temperature / 100f;
+
+		if (temperature > 100f)
+			temperature = 100f;
+
+		if (temperature < 0f)
+			temperature = 0f;
 	}
 
 	public void Charge(float amount) {
@@ -25,9 +31,6 @@ public class ChargeableScript : MonoBehaviour {
 	}
 
 	public void Uncharge() {
-		if (Time.time - time > 1) {
-			temperature -= step;
-			time = Time.time;
-		}
+		temperature -= step * Time.deltaTime;
 	}
 }
