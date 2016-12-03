@@ -25,7 +25,7 @@ public class RayShooterScript : MonoBehaviour
 				GameObject hitObject = hit.transform.gameObject;
 				ChargeableScript chargeable = hitObject.GetComponent<ChargeableScript>();
 				if (chargeable != null) {
-					chargeable.ReactToHit();
+					//chargeable.ReactToHit();
 					Debug.Log ("Target hit");
 				} else {
 					StartCoroutine (SphereIndicator (hit.point));
