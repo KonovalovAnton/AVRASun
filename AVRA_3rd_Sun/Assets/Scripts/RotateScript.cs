@@ -19,8 +19,8 @@ public class RotateScript : MonoBehaviour {
         float y = r;
         for (float i = 0; i < Mathf.PI*2; i+=Mathf.PI/90)
         {
-            x = Mathf.Cos(i) * r;
-            y = Mathf.Sin(i) * r;
+			x = Mathf.Cos(i) * r + centrePoint.position.x;
+			y = Mathf.Sin(i) * r + centrePoint.position.y;
             GameObject go = GameObject.Instantiate(line, new Vector3(x,0,y), Quaternion.identity) as GameObject;
             go.transform.parent = transform.parent;
         }

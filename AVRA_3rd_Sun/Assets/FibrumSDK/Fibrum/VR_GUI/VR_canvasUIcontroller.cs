@@ -12,7 +12,8 @@ public class VR_canvasUIcontroller : MonoBehaviour {
 
 	public void UpdatesSceneCanvases()
 	{
-		UI_dummyCamera = transform.Find("VRCamera/VR_UI_dummyCamera").GetComponent<Camera>();
+		//UI_dummyCamera = transform.Find("VRCamera/VR_UI_dummyCamera").GetComponent<Camera>();
+		UI_dummyCamera = transform.Find("VRCamera/Main Camera").GetComponent<Camera>();
 		GameObject eventSystem = null;
 		if( GameObject.FindObjectOfType<EventSystem>()!=null ) eventSystem = GameObject.FindObjectOfType<EventSystem>().gameObject;
 		if( eventSystem!=null )
