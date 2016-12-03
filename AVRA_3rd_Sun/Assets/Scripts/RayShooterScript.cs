@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RayShooterScript : MonoBehaviour
 {
+	public float chargeSpeed  = 5f;
 
 	private Camera _camera;
 
@@ -23,23 +24,11 @@ public class RayShooterScript : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit)) {
 				GameObject hitObject = hit.transform.gameObject;
-				ChargeableScript chargeable = hitObject.GetComponent<ChargeableScript>();
+				ChargeableScript chargeable = hitObject.GetComponentInChildren<ChargeableScript>();
 				if (chargeable != null) {
-					//chargeable.ReactToHit();
+				chargeable.Charge(Time.deltaTime * chargeSpeed);
 					Debug.Log ("Target hit");
-				} else {
-					StartCoroutine (SphereIndicator (hit.point));
-			}
+				} 
 		}
-	}
-
-	private IEnumerator SphereIndicator (Vector3 pos)
-	{
-		GameObject sphere = GameObject.CreatePrimitive (PrimitiveType.Sphere);
-		sphere.transform.position = pos;
-
-		yield return new WaitForSeconds (1);
-
-		Destroy (sphere);
 	}
 }
