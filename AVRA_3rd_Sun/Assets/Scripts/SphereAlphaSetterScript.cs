@@ -20,11 +20,11 @@ public class SphereAlphaSetterScript : MonoBehaviour {
 		if (chargeable.temperature > 50f) {
 			float lavaToSet = (chargeable.temperature - 50f) / 50f;
 			waterSphere.SetMaterialAlpha(0f);
-			lavaSphere.SetMaterialAlpha(Mathf.Pow(lavaToSet, 4));
+			lavaSphere.SetMaterialAlpha(Mathf.Pow(lavaToSet, 3));
 		}
 		else if (chargeable.temperature < 50f) {
 			float iceToSet = (50f - chargeable.temperature)/ 50f;
-			waterSphere.SetMaterialAlpha(Mathf.Pow(iceToSet, 4));
+			waterSphere.SetMaterialAlpha(Mathf.Pow(iceToSet, 3));
 			lavaSphere.SetMaterialAlpha(0f);
 		}
 		else {

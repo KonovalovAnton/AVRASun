@@ -17,7 +17,7 @@ public class RotateScript : MonoBehaviour {
             (transform.position.z - centrePoint.position.z));
         float x = 0;
         float y = r;
-        for (float i = 0; i < Mathf.PI*2; i+=Mathf.PI/90)
+		for (float i = 0; i < Mathf.PI*2; i+=Mathf.PI/90/r * 5000)
         {
 			x = Mathf.Cos(i) * r + centrePoint.position.x;
 			y = Mathf.Sin(i) * r + centrePoint.position.y;
