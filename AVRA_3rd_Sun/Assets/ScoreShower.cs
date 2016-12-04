@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ScoreShower : MonoBehaviour {
 
     Text t;
+	public float time = 120;
 	// Use this for initialization
 	void Start () {
         t = GetComponent<Text>();
@@ -12,6 +13,15 @@ public class ScoreShower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        t.text = "Score: " + (int)ChargeableScript.score;
+		ChargeableScript.playTime += Time.deltaTime;
+		if((time - (int)(ChargeableScript.playTime)>0) && !ChargeableScript.gameover)
+		{
+			t.text = "Score: " + (int)ChargeableScript.score + " Time: " + (time - (int)(ChargeableScript.playTime));
+		}
+		else
+		{
+			ChargeableScript.gameover = true;
+			t.text = "Game Over! Your score: " + ChargeableScript.score;
+		}
 	}
 }

@@ -45,7 +45,7 @@ public class RayShooterScript : MonoBehaviour
 				waterSphere.SetMaterialAlpha(0f);
 				lavaSphere.SetMaterialAlpha(0f);
 			} */
-			if (chargeable != null) {
+			if (chargeable != null && !ChargeableScript.gameover) {
 				flash.SetActive(true);
 				chargeable.Charge(Time.deltaTime * chargeSpeed);
 				Debug.Log ("Target hit");
