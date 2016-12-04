@@ -9,9 +9,10 @@ public class SphereAlphaSetterScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		lavaSphere = transform.GetChild(3).GetComponent<LavaSphereScript>();
-		waterSphere = transform.GetChild(4).GetComponent<WaterSphereScript>();
-		chargeable = transform.GetComponentInChildren<ChargeableScript>();
+        lavaSphere = transform.FindChild("LavaSphere").GetComponent<LavaSphereScript>();//transform.GetChild(3).GetComponent<LavaSphereScript>();
+        waterSphere = transform.FindChild("WaterSphere").GetComponent<WaterSphereScript>();//transform.GetChild(4).GetComponent<WaterSphereScript>();
+
+        chargeable = transform.GetComponentInChildren<ChargeableScript>();
 
 	}
 	
