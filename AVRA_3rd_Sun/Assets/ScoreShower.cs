@@ -13,6 +13,9 @@ public class ScoreShower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.touchCount > 0) {
+			Application.LoadLevel(1);
+		}
 		ChargeableScript.playTime += Time.deltaTime;
 		if((time - (int)(ChargeableScript.playTime)>0) && !ChargeableScript.gameover)
 		{

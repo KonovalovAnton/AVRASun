@@ -16,6 +16,7 @@ public class ChargeableScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		time = Time.time;
+		playTime = 0;
 	}
 	
 	// Update is called once per frame
