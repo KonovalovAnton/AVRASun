@@ -17,6 +17,8 @@ public class ChargeableScript : MonoBehaviour {
 	void Start () {
 		time = Time.time;
 		playTime = 0;
+		gameover = false;
+		score = 0;
 	}
 	
 	// Update is called once per frame
