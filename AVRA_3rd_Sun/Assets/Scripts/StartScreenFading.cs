@@ -169,6 +169,10 @@ public class StartScreenFading : MonoBehaviour {
 		aboutMenuBackButton.gameObject.SetActive(false);
 	}
 
+    public void SwitchLevel() {
+        Application.LoadLevel(1);
+    }
+
 	public void MuteSound() {
 		if (!muted) {
 			muteButton.color = new Color(1f, 0f, 0f);
