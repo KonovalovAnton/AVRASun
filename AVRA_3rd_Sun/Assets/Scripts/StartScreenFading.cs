@@ -38,25 +38,24 @@ public class StartScreenFading : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		muted = false;
-		easyButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-		easyButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
-		easyButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-		normalButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-		normalButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
-		normalButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-		hardButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-		hardButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
-		hardButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-		jobTitle1.CrossFadeAlpha(0.0f, 0.0001f, false);
-		name1.CrossFadeAlpha(0.0f, 0.0001f, false);
-		jobTitle2.CrossFadeAlpha(0.0f, 0.0001f, false);
-		name2.CrossFadeAlpha(0.0f, 0.0001f, false);
-		choiceMenuBackButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-		choiceMenuBackButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-		aboutMenuBackButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-		aboutMenuBackButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-
+//		muted = false;
+//		easyButton.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		easyButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		easyButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		normalButton.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		normalButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		normalButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		hardButton.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		hardButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		hardButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		jobTitle1.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		name1.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		jobTitle2.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		name2.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		choiceMenuBackButton.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		choiceMenuBackButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		aboutMenuBackButton.CrossFadeAlpha(0.0f, 0.0001f, false);
+//		aboutMenuBackButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
 
 		easyButton.gameObject.SetActive(false);
 		normalButton.gameObject.SetActive(false);
@@ -182,5 +181,42 @@ public class StartScreenFading : MonoBehaviour {
 			muteText.text = "Mute";
 			muted = false;
 		}
+	}
+
+	private void EnableStartMenu() {
+		startButton.gameObject.SetActive(true);
+		aboutButton.gameObject.SetActive(true);
+		muteButton.gameObject.SetActive(true);
+		startButton.color = Color.clear;
+		aboutButton.color = Color.clear;
+		muteButton.color = Color.clear;
+	}
+
+	private void DisableStartMenu() {
+		startButton.gameObject.SetActive(false);
+		aboutButton.gameObject.SetActive(false);
+		muteButton.gameObject.SetActive(false);
+	}
+
+	private void EnableAboutMenu() {
+		aboutMenuBackButton.gameObject.SetActive(true);
+		aboutMenuBackButton.color = Color.clear;
+	}
+
+	private void DisableAboutMenu() {
+		aboutMenuBackButton.gameObject.SetActive(false);
+	}
+
+	private void EnableChoiceMenu() {
+		choiceMenuBackButton.gameObject.SetActive(true);
+		choiceMenuBackButton.color = Color.clear;
+	}
+
+	private void DisableChoiceMenu() {
+		choiceMenuBackButton.gameObject.SetActive(false);
+	}
+
+	public void SwitchLevel() {
+		Application.LoadLevel(1);
 	}
 }
