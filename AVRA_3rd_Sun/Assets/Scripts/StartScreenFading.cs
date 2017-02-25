@@ -36,114 +36,49 @@ public class StartScreenFading : MonoBehaviour {
 	public Image aboutMenuBackButton;
 	public Text aboutMenuBackButtonText;
 
+	bool fadeLogo = false;
+
+
+	// Working vars
+	public Image loadingBar;
+	public Image L;
+	public Image A;
+	public Image D;
+	public Image I;
+	public Image N;
+	public Image G;
+
 	// Use this for initialization
 	void Start () {
-//		muted = false;
-//		easyButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		easyButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		easyButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		normalButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		normalButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		normalButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		hardButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		hardButtonImage.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		hardButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		jobTitle1.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		name1.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		jobTitle2.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		name2.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		choiceMenuBackButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		choiceMenuBackButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		aboutMenuBackButton.CrossFadeAlpha(0.0f, 0.0001f, false);
-//		aboutMenuBackButtonText.CrossFadeAlpha(0.0f, 0.0001f, false);
-
-		easyButton.gameObject.SetActive(false);
-		normalButton.gameObject.SetActive(false);
-		hardButton.gameObject.SetActive(false);
-		choiceMenuBackButton.gameObject.SetActive(false);
-		aboutMenuBackButton.gameObject.SetActive(false);
+		muted = false;
+		DisableChoiceMenu();
+		DisableAboutMenu();
+		jobTitle1.color = Color.clear;
+		name1.color = Color.clear;
+		jobTitle2.color = Color.clear;
+		name2.color = Color.clear;
+	}
+		
+	public void PlayButtonCallback() {
+		fadeLogo = true;
+		StartCoroutine(FadeOutStartMenu());
+		StartCoroutine(FadeInChoiceMenu());
 	}
 
-	public void FadeOutStartScreen() {
-		logo.CrossFadeAlpha(0.0f, 1.0f, false);
-		startButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		muteButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		aboutButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		startText.CrossFadeAlpha(0.0f, 1.0f, false);
-		muteText.CrossFadeAlpha(0.0f, 1.0f, false);
-		aboutText.CrossFadeAlpha(0.0f, 1.0f, false);
+	public void AboutButtonCallback() {
+		fadeLogo = false;
+		StartCoroutine(FadeInAboutMenu());
+		StartCoroutine(FadeOutStartMenu());
 	}
 
-	public void FadeInStartScreen() {
-		logo.CrossFadeAlpha(1.0f, 1.0f, false);
-		startButton.CrossFadeAlpha(1.0f, 1.0f, false);
-		muteButton.CrossFadeAlpha(1.0f, 1.0f, false);
-		aboutButton.CrossFadeAlpha(1.0f, 1.0f, false);
-		startText.CrossFadeAlpha(1.0f, 1.0f, false);
-		muteText.CrossFadeAlpha(1.0f, 1.0f, false);
-		aboutText.CrossFadeAlpha(1.0f, 1.0f, false);
+	public void ChoiceMenuBackButtonCallback() {
+		StartCoroutine(FadeOutChoiceMenu());
+		StartCoroutine(FadeInStartMenu());
 	}
 
-	public void FadeOutChoiceScreen() {
-		easyButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		easyButtonImage.CrossFadeAlpha(0.0f, 1.0f, false);
-		easyButtonText.CrossFadeAlpha(0.0f, 1.0f, false);
-		normalButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		normalButtonImage.CrossFadeAlpha(0.0f, 1.0f, false);
-		normalButtonText.CrossFadeAlpha(0.0f, 1.0f, false);
-		hardButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		hardButtonImage.CrossFadeAlpha(0.0f, 1.0f, false);
-		hardButtonText.CrossFadeAlpha(0.0f, 1.0f, false);
-
-		easyButton.gameObject.SetActive(false);
-		normalButton.gameObject.SetActive(false);
-		hardButton.gameObject.SetActive(false);
-		choiceMenuBackButton.gameObject.SetActive(false);
-
-		startButton.gameObject.SetActive(true);
-		muteButton.gameObject.SetActive(true);
-		aboutButton.gameObject.SetActive(true);
-		FadeInStartScreen();
-	}
-
-	public void FadeInChoiceScreen() {
-		FadeOutStartScreen();
-
-		easyButton.gameObject.SetActive(true);
-		normalButton.gameObject.SetActive(true);
-		hardButton.gameObject.SetActive(true);
-		choiceMenuBackButton.gameObject.SetActive(true);
-
-		easyButton.CrossFadeAlpha(1.0f, 1.0f, false);
-		easyButtonImage.CrossFadeAlpha(1.0f, 1.0f, false);
-		easyButtonText.CrossFadeAlpha(1.0f, 1.0f, false);
-		normalButton.CrossFadeAlpha(1.0f, 1.0f, false);
-		normalButtonImage.CrossFadeAlpha(1.0f, 1.0f, false);
-		normalButtonText.CrossFadeAlpha(1.0f, 1.0f, false);
-		hardButton.CrossFadeAlpha(1.0f, 1.0f, false);
-		hardButtonImage.CrossFadeAlpha(1.0f, 1.0f, false);
-		hardButtonText.CrossFadeAlpha(1.0f, 1.0f, false);
-		choiceMenuBackButton.CrossFadeAlpha(1.0f, 1.0f, false);
-		choiceMenuBackButtonText.CrossFadeAlpha(1.0f, 1.0f, false);
-	}
-
-	public void AboutFadeInScreen() {
-		aboutMenuBackButton.gameObject.SetActive(true);
-		startButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		muteButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		aboutButton.CrossFadeAlpha(0.0f, 1.0f, false);
-		startText.CrossFadeAlpha(0.0f, 1.0f, false);
-		muteText.CrossFadeAlpha(0.0f, 1.0f, false);
-		aboutText.CrossFadeAlpha(0.0f, 1.0f, false);
-		startButton.gameObject.SetActive(false);
-		muteButton.gameObject.SetActive(false);
-		aboutButton.gameObject.SetActive(false);
-
-		jobTitle1.CrossFadeAlpha(1.0f, 1.0f, false);
-		name1.CrossFadeAlpha(1.0f, 1.0f, false);
-		jobTitle2.CrossFadeAlpha(1.0f, 1.0f, false);
-		name2.CrossFadeAlpha(1.0f, 1.0f, false);
-		aboutMenuBackButton.CrossFadeAlpha(1.0f, 1.0f, false);
+	public void AboutMenuBackButtonCallback() {
+		StartCoroutine(FadeOutAboutMenu());
+		StartCoroutine(FadeInStartMenu());
 	}
 
 	public void AboutFadeOutScreen() {
@@ -193,7 +128,14 @@ public class StartScreenFading : MonoBehaviour {
 		muteButton.gameObject.SetActive(true);
 		startButton.color = Color.clear;
 		aboutButton.color = Color.clear;
-		muteButton.color = Color.clear;
+
+		if (!muted) {
+			muteButton.color = Color.clear;
+		}
+		else {
+			muteButton.color = new Color(1f, 0f, 0f, 0f);
+			//muteButton.color = Color.red;
+		}
 	}
 
 	private void DisableStartMenu() {
@@ -212,15 +154,156 @@ public class StartScreenFading : MonoBehaviour {
 	}
 
 	private void EnableChoiceMenu() {
+		easyButton.gameObject.SetActive(true);
+		normalButton.gameObject.SetActive(true);
+		hardButton.gameObject.SetActive(true);
 		choiceMenuBackButton.gameObject.SetActive(true);
+		easyButton.color = Color.clear;
+		normalButton.color = Color.clear;
+		hardButton.color = Color.clear;
 		choiceMenuBackButton.color = Color.clear;
 	}
 
 	private void DisableChoiceMenu() {
+		easyButton.gameObject.SetActive(false);
+		normalButton.gameObject.SetActive(false);
+		hardButton.gameObject.SetActive(false);
 		choiceMenuBackButton.gameObject.SetActive(false);
 	}
 
-	public void SwitchLevel() {
-		Application.LoadLevel(1);
+	IEnumerator FadeOutStartMenu() {
+		for (float alpha = 1.0f; alpha > 0f; alpha -= Time.deltaTime) {
+			Color temp = new Color(logo.color.r, logo.color.g, logo.color.b, alpha);
+			if (fadeLogo) {
+				logo.color = temp;
+			}
+			startButton.color = temp;
+			//muteButton.color = new Color(muteButton.color.r, muteButton.color.g, muteButton.color.b, alpha); // ugly fast fix
+			aboutButton.color = temp;
+			startText.color = temp;
+			//muteText.color = new Color(muteButton.color.r, muteButton.color.g, muteButton.color.b, alpha);
+			aboutText.color = temp;
+			if (!muted) {
+				muteButton.color = new Color(1, 1, 1, alpha);
+				muteText.color = new Color(1, 1, 1, alpha);
+			}
+			else {
+				muteButton.color = new Color(1, 0, 0, alpha);
+				muteText.color = new Color(1, 0, 0, alpha);
+			}
+			yield return null;
+		}
+		DisableStartMenu();
+	}
+
+	IEnumerator FadeInStartMenu() {
+		EnableStartMenu();
+		for (float alpha = 0.0f; alpha < 1.0f; alpha += Time.deltaTime / 2) {
+			Color temp = new Color(logo.color.r, logo.color.g, logo.color.b, alpha);
+			if (fadeLogo) {
+				logo.color = temp;
+			}
+			startButton.color = temp;
+			aboutButton.color = temp;
+			startText.color = temp;
+			aboutText.color = temp;
+			if (!muted) {
+				muteButton.color = new Color(1, 1, 1, alpha);
+				muteText.color = new Color(1, 1, 1, alpha);
+			}
+			else {
+				muteButton.color = new Color(1, 0, 0, alpha);
+				muteText.color = new Color(1, 0, 0, alpha);
+			}
+			yield return null;
+		}
+	}
+
+	IEnumerator FadeOutChoiceMenu() {
+		for (float alpha = 1.0f; alpha > 0.0f; alpha -= Time.deltaTime) {
+			Color temp = new Color(logo.color.r, logo.color.g, logo.color.b, alpha);
+			easyButton.color = temp;
+			easyButtonImage.color = temp;
+			easyButtonText.color = temp;
+			normalButton.color = temp;
+			normalButtonImage.color = temp;
+			normalButtonText.color = temp;
+			hardButton.color = temp;
+			hardButtonImage.color = temp;
+			hardButtonText.color = temp;
+			choiceMenuBackButton.color = temp;
+			choiceMenuBackButtonText.color = temp;
+			yield return null;
+		}
+		DisableChoiceMenu();
+	}
+
+	IEnumerator FadeInChoiceMenu() {
+		EnableChoiceMenu();
+		for (float alpha = 0.0f; alpha < 1.0f; alpha += Time.deltaTime / 2) {
+			Color temp = new Color(logo.color.r, logo.color.g, logo.color.b, alpha);
+			easyButton.color = temp;
+			easyButtonImage.color = temp;
+			easyButtonText.color = temp;
+			normalButton.color = temp;
+			normalButtonImage.color = temp;
+			normalButtonText.color = temp;
+			hardButton.color = temp;
+			hardButtonImage.color = temp;
+			hardButtonText.color = temp;
+			choiceMenuBackButton.color = temp;
+			choiceMenuBackButtonText.color = temp;
+			yield return null;
+		}
+	}
+
+	IEnumerator FadeOutAboutMenu() {
+		for (float alpha = 1.0f; alpha > 0.0f; alpha -= Time.deltaTime) {
+			Color temp = new Color(logo.color.r, logo.color.g, logo.color.b, alpha);
+			jobTitle1.color = temp;
+			name1.color = temp;
+			jobTitle2.color = temp;
+			name2.color = temp;
+			aboutMenuBackButton.color = temp;
+			aboutMenuBackButtonText.color = temp;
+			yield return null;
+		}
+		DisableAboutMenu();
+	}
+
+	IEnumerator FadeInAboutMenu() {
+		EnableAboutMenu();
+		for (float alpha = 0.0f; alpha < 1.0f; alpha += Time.deltaTime / 2) {
+			Color temp = new Color(logo.color.r, logo.color.g, logo.color.b, alpha);
+			jobTitle1.color = temp;
+			name1.color = temp;
+			jobTitle2.color = temp;
+			name2.color = temp;
+			aboutMenuBackButton.color = temp;
+			aboutMenuBackButtonText.color = temp;
+			yield return null;
+		}
+	}
+
+	private Vector3 zAxis = new Vector3(0, 0, 1);
+
+	void Update() {
+//		L.transform.RotateAround(loadingBar.transform.position, zAxis, 1f);
+//		L.transform.eulerAngles = new Vector3(0, 0, 0);
+//		A.transform.RotateAround(loadingBar.transform.position, zAxis, 1.25f);
+//		A.transform.eulerAngles = new Vector3(0, 0, 0);
+//		D.transform.RotateAround(loadingBar.transform.position, zAxis, 5f);
+//		D.transform.eulerAngles = new Vector3(0, 0, 0);
+//		I.transform.RotateAround(loadingBar.transform.position, zAxis, 0.75f);
+//		I.transform.eulerAngles = new Vector3(0, 0, 0);
+//		N.transform.RotateAround(loadingBar.transform.position, zAxis, 0.5f);
+//		N.transform.eulerAngles = new Vector3(0, 0, 0);
+//		G.transform.RotateAround(loadingBar.transform.position, zAxis, 1.75f);
+//		G.transform.eulerAngles = new Vector3(0, 0, 0);
+
+		// ASK ABOUT FACING TOWARDS FACE SCRIPT
+
+//		logo.transform.RotateAround(startButton.transform.position, zAxis, 1f); 
+//		logo.transform.eulerAngles = new Vector3(0, 0, 0);
 	}
 }
