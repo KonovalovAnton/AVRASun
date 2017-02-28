@@ -50,6 +50,11 @@ public class ChargeableScript : MonoBehaviour {
 		temperature += amount;
 	}
 
+    public void DischargeFully()
+    {
+        temperature = 0;
+    }
+
 	public void Uncharge() {
 		temperature -= step * Time.deltaTime;
 	}

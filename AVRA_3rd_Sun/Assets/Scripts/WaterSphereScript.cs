@@ -14,7 +14,8 @@ public class WaterSphereScript : MonoBehaviour {
 	}
 
 	public void SetMaterialAlpha(float value) {
-		Debug.Log("Water Sphere Alpha Value: " + value);
+        //stop flooding
+		//Debug.Log("Water Sphere Alpha Value: " + value);
 		//this.GetComponent<MeshRenderer>().material.color.a =
 		this.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, value);
 	}

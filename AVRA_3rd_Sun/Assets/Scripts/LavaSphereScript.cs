@@ -14,7 +14,8 @@ public class LavaSphereScript : MonoBehaviour {
 	}
 
 	public void SetMaterialAlpha(float value) {
-		Debug.Log("Lava Sphere Alpha Value: " + value);
+        //stop flooding
+		//Debug.Log("Lava Sphere Alpha Value: " + value);
 		this.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, value);
 	}
 }

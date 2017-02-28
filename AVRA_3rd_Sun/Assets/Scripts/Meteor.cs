@@ -5,13 +5,17 @@ using UnityEngine;
 public class Meteor : MonoBehaviour {
 
     [SerializeField] GameObject visuals;
+    [SerializeField] float waitTime = 10;
+    [SerializeField] float deltaRange = 100;
+    [SerializeField] float speed = 200;
+    [SerializeField] float lifeTime = 1f;
+
     Transform target;
     Vector3 start;
     bool moving;
     float timeToLaunch;
-    float waitTime = 10;
-    float deltaRange = 1000;
-    float speed = 2000;
+    float t;
+    float life;
 
 	// Use this for initialization
 	void Start () {
@@ -51,11 +55,14 @@ public class Meteor : MonoBehaviour {
     {
         if(Vector3.Distance(transform.position,target.position) < deltaRange)
         {
+            Debug.Log("Planet Destroyed!");
+            target.GetComponentInChildren<ChargeableScript>().DischargeFully();
             OnApproach();
             return;
         }
-
-        transform.Translate((target.position - transform.position).normalized * Time.deltaTime * speed);
+        t += Time.deltaTime;
+        transform.Translate((target.position - transform.position).normalized * Time.deltaTime * 
+            speed * (1 + (Mathf.Min(10, t) /10)));
 
     }
 
@@ -65,7 +72,21 @@ public class Meteor : MonoBehaviour {
         timeToLaunch = Time.time + waitTime;
         visuals.SetActive(false);
         transform.position = start;
+        life = lifeTime;
+        t = 0;
     }
 
-
+    public void HitBySun()
+    {
+        if(moving)
+        {
+            life -= Time.deltaTime;
+            if(life < 0)
+            {
+                Debug.Log("Meteor Destroyed!");
+                //explosion
+                OnApproach();
+            }
+        }
+    }
 }

@@ -7,10 +7,14 @@ public class RotateScript : MonoBehaviour {
     Transform centrePoint;
     
     [SerializeField] float angleSpeed;
+    [SerializeField] bool registerAsMeteorTarget = true;
 
     void Start () {
         centrePoint = transform.parent;
-        PlanetHolder.Register(transform);
+        if (registerAsMeteorTarget)
+        {
+            PlanetHolder.Register(transform);
+        }
     }
 	
 	void Update () {
